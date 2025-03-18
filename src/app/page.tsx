@@ -1,103 +1,97 @@
+"use client"
+
+import { InputText } from "@/components/inputText";
+
+import Logo from "../assets/Logo.svg";
+
 import Image from "next/image";
+import { Calendar, Contact, PaintbrushVertical } from "lucide-react";
+import { SegmentedControl } from "@/components/segmentedControl";
+import { TextArea } from "@/components/textArea";
+import { ColorSelecion } from "@/components/colorSelection";
+
+import { colors, themeEvents } from "@/constants";
+
+import { useState } from "react";
+import { ThemeSelecion } from "@/components/themeSelection";
+import { InputCheckBox } from "@/components/inputCheckBox";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  const [selectedColor, setSelectedColor] = useState("");
+  const [selectedTheme, setSelectedTheme] = useState("");
+
+  return (
+    <main className="max-w-7xl mx-auto p-5 bg-shape-background flex gap-5 rounded-[20px] min-h-[768px]">
+      <div className="w-[400px] h-[728px] rounded-xl bg-[url(/background.png)] bg-no-repeat p-8">
+        <div className="h-36 mx-auto max-w-[336px] flex flex-col gap-4">
+          <Image src={Logo} alt="Picture of Logo" className="h-12 w-11"/>
+          <span className="flex flex-col gap-1">
+            <h1 className="text-accent-pink text-[40px] font-leckerli-one">Festivite</h1>
+            <p>Crie um convite digital para o seu evento</p>
+          </span>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </div>
+      <div className="w-[820px] bg-shape-body rounded-xl py-20 flex flex-col items-center gap-10 h-[728px] overflow-auto">
+        <h2 className="text-text-heading font-baloo-2 text-[28px] w-[560px] font-bold h-11">Crie seu convite</h2>
+        <div className="h-full flex flex-col gap-12 w-[560px]">
+
+            <section className="flex flex-col gap-6 h-full">
+              <div className="flex gap-3">
+                <Calendar strokeWidth={1.5} className="text-input-placeholder"/>
+                <p className="text-text-heading text-lg leading-[20px] font-baloo-2 font-bold">Sobre o evento</p>
+              </div>
+              <form className="flex flex-col gap-4 h-[452px]">
+                <InputText title="Título" placeholder="Nome do evento" />
+                <span className="flex gap-4">
+                  <InputText title="Início" placeholder="DD/MM/AAAA, --:--" />
+                  <InputText title="Fim" placeholder="DD/MM/AAAA, --:--" />
+                </span>
+                <span className="flex gap-4">
+                  <SegmentedControl  title="Tipo" onChange={(selected) => console.log("Selecionado:", selected)}/>
+                  <InputText title="Local" placeholder="Link ou endereço" />
+                </span>
+                <TextArea title="Descrição" placeholder="Escreva sobre os detalhes do evento" />
+              </form>
+            </section>
+          
+            <section className="flex flex-col gap-6">
+              <div className="flex gap-3">
+                <PaintbrushVertical strokeWidth={1.5} className="text-input-placeholder"/>
+                <p className="text-text-heading text-lg leading-[20px] font-baloo-2 font-bold">Personalização</p>
+              </div>
+              <form className="max-h-[570px] flex flex-col gap-7">
+                <div className="w-full flex gap-4 flex-col">
+                  <p>Cor principal</p>
+                  <div className="flex justify-between">
+                    {colors.map((color)=>(
+                      <ColorSelecion key={color.name} color={color.value} selectedColor={selectedColor} setSelectedColor={setSelectedColor}/>
+                    ))}
+                  </div>
+                </div>
+                <div className="flex flex-col gap-4">
+                  <p>Tema do evento</p>
+                  <div className="grid grid-cols-4 grid-rows-3 gap-2">
+                    {themeEvents.map((theme)=>( 
+                      <ThemeSelecion key={theme.label} src={theme.value} name={theme.label} selectedTheme={selectedTheme} setSelectedTheme={setSelectedTheme}/>
+                    ))}
+                  </div>
+                </div>
+              </form>
+            </section>
+          
+            <section className="flex flex-col">
+              <div className="flex gap-3">
+                <Contact strokeWidth={1.5} className="text-input-placeholder"/>
+                <p className="text-text-heading text-lg leading-[20px] font-baloo-2 font-bold">Dados para contato</p>
+              </div>
+            </section>
+
+            <footer className="">
+                <InputCheckBox label="text"/>
+            </footer>
+        </div>
+      </div>
+    </main>
   );
 }
