@@ -34,3 +34,31 @@
   --font-open-sans: var(--font-open-sans);
   --font-leckerli-one: var(--font-leckerli-one); 
 }
+
+@layer components{
+  .slider{
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+    transition: .4s;
+    border-radius: 25px;
+  
+  }
+
+  .slider::before{
+    position: absolute;
+    content: "";
+    height: 24px;
+    width: 24px;
+    left: 4px;
+    bottom: 3.5px;
+    transition: .4s;
+    border-radius: 50%;
+  }
+
+  .input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+    display: none;
+}
+}

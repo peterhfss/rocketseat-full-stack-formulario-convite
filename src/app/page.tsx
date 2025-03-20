@@ -5,7 +5,7 @@ import { InputText } from "@/components/inputText";
 import Logo from "../assets/Logo.svg";
 
 import Image from "next/image";
-import { Calendar, Contact, PaintbrushVertical } from "lucide-react";
+import { Calendar, Contact, PaintbrushVertical, Upload } from "lucide-react";
 import { SegmentedControl } from "@/components/segmentedControl";
 import { TextArea } from "@/components/textArea";
 import { ColorSelecion } from "@/components/colorSelection";
@@ -15,6 +15,8 @@ import { colors, themeEvents } from "@/constants";
 import { useState } from "react";
 import { ThemeSelecion } from "@/components/themeSelection";
 import { InputCheckBox } from "@/components/inputCheckBox";
+import { SwitchToggle } from "@/components/switchToggle";
+import { FileInput } from "@/components/fileInput";
 
 export default function Home() {
 
@@ -42,14 +44,14 @@ export default function Home() {
                 <p className="text-text-heading text-lg leading-[20px] font-baloo-2 font-bold">Sobre o evento</p>
               </div>
               <form className="flex flex-col gap-4 h-[452px]">
-                <InputText title="Título" placeholder="Nome do evento" />
+                <InputText title="Título" type="text" placeholder="Nome do evento" />
                 <span className="flex gap-4">
-                  <InputText title="Início" placeholder="DD/MM/AAAA, --:--" />
-                  <InputText title="Fim" placeholder="DD/MM/AAAA, --:--" />
+                  <InputText title="Início" type="datetime-local"  />
+                  <InputText title="Fim" type="datetime-local" />
                 </span>
                 <span className="flex gap-4">
                   <SegmentedControl  title="Tipo" onChange={(selected) => console.log("Selecionado:", selected)}/>
-                  <InputText title="Local" placeholder="Link ou endereço" />
+                  <InputText title="Local" placeholder="Link ou endereço" type="text"/>
                 </span>
                 <TextArea title="Descrição" placeholder="Escreva sobre os detalhes do evento" />
               </form>
@@ -76,18 +78,30 @@ export default function Home() {
                       <ThemeSelecion key={theme.label} src={theme.value} name={theme.label} selectedTheme={selectedTheme} setSelectedTheme={setSelectedTheme}/>
                     ))}
                   </div>
+                  <div className="flex gap-4">
+                    <SwitchToggle title="Estilo"/>
+                    <FileInput title="Foto de capa" children={<Upload  size={16}/>} />
+                  </div>
                 </div>
               </form>
             </section>
           
-            <section className="flex flex-col">
+            <section className="flex flex-col gap-6">
               <div className="flex gap-3">
                 <Contact strokeWidth={1.5} className="text-input-placeholder"/>
                 <p className="text-text-heading text-lg leading-[20px] font-baloo-2 font-bold">Dados para contato</p>
               </div>
+              <form className="flex flex-col gap-4">
+                <InputText title="Nome" placeholder="Nome Completo" required type="text"/>
+                <div className="flex gap-4">
+                  <InputText title="E-mail" placeholder="exemplo@email.com" type="email"/>
+                  <InputText title="Telefone"placeholder="(99) 99999-9999" type="tel"/>
+                </div>
+              </form>
             </section>
 
-            <footer className="">
+            <footer className="flex w-full h-[228px]">
+              
                 <InputCheckBox label="text"/>
             </footer>
         </div>

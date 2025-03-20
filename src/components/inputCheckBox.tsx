@@ -10,6 +10,7 @@ export function InputCheckBox({label}: InputCheckBoxProps){
     <label>
       <input type="checkbox" className="hidden peer" />
       <div  className=""/>
+      {label}
     </label>
   )
 }
