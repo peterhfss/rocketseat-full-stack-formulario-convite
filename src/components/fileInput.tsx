@@ -26,7 +26,7 @@ export function FileInput({title , children , error=false}:FileInputProps){
     > 
       <h2 className="text-text-body text-sm">{title}</h2>
       <div className="flex gap-3 w-full h-12 items-center">
-        <label htmlFor="file" className="bg-shape-button h-10 rounded-lg font-bold flex gap-2 px-3 py-1 w-[120px] text-sm items-center cursor-pointer">
+        <label htmlFor="file" className="bg-shape-button hover:bg-shape-hover h-10 rounded-lg font-bold flex gap-2 px-3 py-1 w-[120px] text-sm items-center cursor-pointer">
           <span className="text-brand-light">
             {children}
           </span>

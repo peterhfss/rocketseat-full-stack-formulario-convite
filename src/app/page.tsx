@@ -1,22 +1,12 @@
 "use client"
 
-import { InputText } from "@/components/inputText";
+import { InputText,SegmentedControl, SwitchToggle, InputCheckBox, TextArea,FileInput, ColorSelecion, ThemeSelection, Button } from "@/components";
 
 import Logo from "../assets/Logo.svg";
-
 import Image from "next/image";
-import { Calendar, Contact, PaintbrushVertical, Upload } from "lucide-react";
-import { SegmentedControl } from "@/components/segmentedControl";
-import { TextArea } from "@/components/textArea";
-import { ColorSelecion } from "@/components/colorSelection";
-
+import { Calendar, Contact, PaintbrushVertical, Upload , Ticket, Check} from "lucide-react";
 import { colors, themeEvents } from "@/constants";
-
 import { useState } from "react";
-import { ThemeSelecion } from "@/components/themeSelection";
-import { InputCheckBox } from "@/components/inputCheckBox";
-import { SwitchToggle } from "@/components/switchToggle";
-import { FileInput } from "@/components/fileInput";
 
 export default function Home() {
 
@@ -34,7 +24,7 @@ export default function Home() {
           </span>
         </div>
       </div>
-      <div className="w-[820px] bg-shape-body rounded-xl py-20 flex flex-col items-center gap-10 h-[728px] overflow-auto">
+      <div className="w-[820px] bg-shape-body rounded-xl py-20 flex flex-col items-center gap-10 h-[728px] overflow-auto scrollbar">
         <h2 className="text-text-heading font-baloo-2 text-[28px] w-[560px] font-bold h-11">Crie seu convite</h2>
         <div className="h-full flex flex-col gap-12 w-[560px]">
 
@@ -75,7 +65,7 @@ export default function Home() {
                   <p>Tema do evento</p>
                   <div className="grid grid-cols-4 grid-rows-3 gap-2">
                     {themeEvents.map((theme)=>( 
-                      <ThemeSelecion key={theme.label} src={theme.value} name={theme.label} selectedTheme={selectedTheme} setSelectedTheme={setSelectedTheme}/>
+                      <ThemeSelection key={theme.label} src={theme.value} name={theme.label} selectedTheme={selectedTheme} setSelectedTheme={setSelectedTheme}/>
                     ))}
                   </div>
                   <div className="flex gap-4">
@@ -100,9 +90,15 @@ export default function Home() {
               </form>
             </section>
 
-            <footer className="flex w-full h-[228px]">
-              
-                <InputCheckBox label="text"/>
+            <footer className="flex w-full h-full border-t-[1px] border-t-input-stroke pt-10 flex-col gap-12 pb-20">
+              <div className="flex flex-col gap-1 w-full h-24">
+                <InputCheckBox children={<Check size={16} />} text={`Li e concordo com os Termos e Condições e com a Política de Privacidade`}/>
+                <InputCheckBox children={<Check size={16} />} text={`Aceito receber atualizações e promoções por e-mail`}/>
+                <InputCheckBox children={<Check size={16} />} text={`Aceito receber atualizações e promoções por SMS`}/>
+              </div>
+              <div className="flex justify-end w-full h-12">
+                <Button children={<Ticket />}/>
+              </div>
             </footer>
         </div>
       </div>

@@ -1,7 +1,5 @@
 # Desafio prático - Portfólio Dev
 
-## 🚧 Em Desenvolvimento 🚧
-
 ## Sobre o Desafio
 
 Terceiro desafio prático da formação Full-Stack pela Rocketseat. Nesse desafio 

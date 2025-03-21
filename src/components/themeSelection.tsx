@@ -10,7 +10,7 @@ interface ThemeSelectionProps extends ComponentProps<'input'>{
   setSelectedTheme: (name:string) => void
 }
 
-export function ThemeSelecion({src, name, selectedTheme, setSelectedTheme}:ThemeSelectionProps){
+export function ThemeSelection({src, name, selectedTheme, setSelectedTheme}:ThemeSelectionProps){
 
   return(
    <div 
